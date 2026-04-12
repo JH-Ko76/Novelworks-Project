@@ -1,1 +1,2 @@
-
+# AWS_Infra_Create_Terraform_code
+今回のAIチャットボット課題のためのバックエンドを、Terraform のコードを用いて作成してみました。
