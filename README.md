@@ -21,7 +21,7 @@
   <li> HTTP Client: Axios </li>
 </ol>
 </br>
-<h4>🖥 Back End (Serverless) </h4> 
+<h4> Back End (Serverless) </h4> 
 <ol>
   <li> Runtime: Python 3.11</li>
   <li> Server : AWS Lambdae </li>
