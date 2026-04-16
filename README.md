@@ -145,8 +145,16 @@ $terraform destroy
 
 ```bash
 #Window パス例: C:\....\Novelworks-Project\front_end
+# nvmをダウンロードしてインストールする：
+$curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.4/install.sh | bash
+# シェルを再起動する代わりに実行する
+$\. "$HOME/.nvm/nvm.sh"
+# Node.jsをダウンロードしてインストールする：
+$nvm install 24
+# Node.jsのバージョンを確認する：
+$node -v 
 #必要なライブラリをインストールします。 
-$npm install
+$npm -v
 
 #TailwindCSSンストール
 $npm install -D tailwindcss postcss autoprefixer
