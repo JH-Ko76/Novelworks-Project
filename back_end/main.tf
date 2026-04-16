@@ -103,11 +103,23 @@ resource "aws_api_gateway_integration" "options_ask_integration" {
   request_templates = { "application/json" = "{\"statusCode\": 200}" }
 }
 
-resource "aws_api_gateway_integration_response" "options_ask_response" {
+resource "aws_api_gateway_method_response" "options_ask_200" {
   rest_api_id = aws_api_gateway_rest_api.classifier_api.id
   resource_id = aws_api_gateway_resource.proxy.id
   http_method = aws_api_gateway_method.options_ask.http_method
   status_code = "200"
+  response_parameters = {
+    "method.response.header.Access-Control-Allow-Headers" = true,
+    "method.response.header.Access-Control-Allow-Methods" = true,
+    "method.response.header.Access-Control-Allow-Origin"  = true
+  }
+}
+
+resource "aws_api_gateway_integration_response" "options_ask_response" {
+  rest_api_id = aws_api_gateway_rest_api.classifier_api.id
+  resource_id = aws_api_gateway_resource.proxy.id
+  http_method = aws_api_gateway_method.options_ask.http_method
+  status_code = aws_api_gateway_method_response.options_ask_200.status_code
   response_parameters = {
     "method.response.header.Access-Control-Allow-Headers" = "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'",
     "method.response.header.Access-Control-Allow-Methods" = "'POST,OPTIONS,GET'",
@@ -116,7 +128,7 @@ resource "aws_api_gateway_integration_response" "options_ask_response" {
   depends_on = [aws_api_gateway_integration.options_ask_integration]
 }
 
-# CORS設定：/updateリソース用（PATCH追加）
+# CORS設定：/updateリソース用
 resource "aws_api_gateway_method" "options_update" {
   rest_api_id   = aws_api_gateway_rest_api.classifier_api.id
   resource_id   = aws_api_gateway_resource.update.id
@@ -132,14 +144,26 @@ resource "aws_api_gateway_integration" "options_update_integration" {
   request_templates = { "application/json" = "{\"statusCode\": 200}" }
 }
 
-resource "aws_api_gateway_integration_response" "options_update_response" {
+resource "aws_api_gateway_method_response" "options_update_200" {
   rest_api_id = aws_api_gateway_rest_api.classifier_api.id
   resource_id = aws_api_gateway_resource.update.id
   http_method = aws_api_gateway_method.options_update.http_method
   status_code = "200"
   response_parameters = {
+    "method.response.header.Access-Control-Allow-Headers" = true,
+    "method.response.header.Access-Control-Allow-Methods" = true,
+    "method.response.header.Access-Control-Allow-Origin"  = true
+  }
+}
+
+resource "aws_api_gateway_integration_response" "options_update_response" {
+  rest_api_id = aws_api_gateway_rest_api.classifier_api.id
+  resource_id = aws_api_gateway_resource.update.id
+  http_method = aws_api_gateway_method.options_update.http_method
+  status_code = aws_api_gateway_method_response.options_update_200.status_code
+  response_parameters = {
     "method.response.header.Access-Control-Allow-Headers" = "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'",
-    "method.response.header.Access-Control-Allow-Methods" = "'PATCH,OPTIONS,GET'", # PATCH 추가됨
+    "method.response.header.Access-Control-Allow-Methods" = "'PATCH,OPTIONS,GET'",
     "method.response.header.Access-Control-Allow-Origin"  = "'*'"
   }
   depends_on = [aws_api_gateway_integration.options_update_integration]
@@ -149,35 +173,36 @@ resource "aws_api_gateway_integration_response" "options_update_response" {
 resource "aws_api_gateway_deployment" "deployment" {
   rest_api_id = aws_api_gateway_rest_api.classifier_api.id
 
+  # コアポイント：すべての関連リソースが作成された後にデプロイが実行されるように強制する
+  depends_on = [
+    aws_api_gateway_integration.lambda_integration,
+    aws_api_gateway_integration.update_lambda_integration,
+    aws_api_gateway_integration_response.options_ask_response,
+    aws_api_gateway_integration_response.options_update_response
+  ]
+
   triggers = {
     redeployment = sha1(jsonencode({
-      # Resources
-      resources = {
-        ask    = aws_api_gateway_resource.proxy.id
-        update = aws_api_gateway_resource.update.id
-      }
-
-      # Methods
-      methods = {
-        ask_post        = aws_api_gateway_method.proxy_method.id
-        update_patch    = aws_api_gateway_method.update_patch.id
-        ask_options     = aws_api_gateway_method.options_ask.id
-        update_options  = aws_api_gateway_method.options_update.id
-      }
-
-      # Integrations 
-      integrations = {
-        ask_lambda = aws_api_gateway_integration.lambda_integration.id
-        update_lambda = aws_api_gateway_integration.update_lambda_integration.id
-        cors_ask = aws_api_gateway_integration.options_ask_integration.id
-        cors_update = aws_api_gateway_integration.options_update_integration.id
-      }
-
-      # CORS response 
-      responses = {
-        ask_cors    = aws_api_gateway_integration_response.options_ask_response.id
-        update_cors = aws_api_gateway_integration_response.options_update_response.id
-      }
+      resources = [
+        aws_api_gateway_resource.proxy.id,
+        aws_api_gateway_resource.update.id
+      ]
+      methods = [
+        aws_api_gateway_method.proxy_method.id,
+        aws_api_gateway_method.update_patch.id,
+        aws_api_gateway_method.options_ask.id,
+        aws_api_gateway_method.options_update.id
+      ]
+      integrations = [
+        aws_api_gateway_integration.lambda_integration.id,
+        aws_api_gateway_integration.update_lambda_integration.id,
+        aws_api_gateway_integration.options_ask_integration.id,
+        aws_api_gateway_integration.options_update_integration.id
+      ]
+      responses = [
+        aws_api_gateway_integration_response.options_ask_response.id,
+        aws_api_gateway_integration_response.options_update_response.id
+      ]
     }))
   }
 
