@@ -17,7 +17,7 @@
 -  [👾 参考 & コード説明](#reference)
    
 ## 🗺️ 全体システム構成図 <a name="architecture"></a>
-<img width="1155" height="532" alt="image" src="https://github.com/user-attachments/assets/05600b55-066a-4564-8dbc-59ebd3f5b679" />
+<img width="1182" height="630" alt="image" src="https://github.com/user-attachments/assets/a173fa56-e843-495e-b823-0418cde917f6" />
 
 
 ## ✨ 主要機能 <a name="features"></a>
