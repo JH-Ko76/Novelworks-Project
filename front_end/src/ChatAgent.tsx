@@ -9,12 +9,12 @@ const ChatAgent: React.FC = () => {
   const [editingId, setEditingId] = useState<string | null>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
 
-  // 메시지 추가 시 자동 스크롤
+  // メッセージ追加時に自動スクロール
   useEffect(() => {
     scrollRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages]);
 
-  // 1. 메시지 전송 및 서버 답변 수신
+  // 1. メッセージ送信、サーバーからの返信受信
   const handleSend = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!input.trim()) return;
@@ -61,7 +61,7 @@ const ChatAgent: React.FC = () => {
     }
   };
 
-  // 2. 카테고리 수동 수정 (Human-in-the-Loop)
+  // 2. カテゴリ修正 (Human-in-the-Loop)
   const handleUpdateCategory = async (messageId: string, newCategory: string) => {
     try {
       const UPDATE_URL = import.meta.env.VITE_UPDATE_URL;
@@ -115,7 +115,7 @@ const ChatAgent: React.FC = () => {
               }`}>
                 <p className="text-sm">{msg.content}</p>
                 
-                {/* 카테고리 표시 (AI 답변일 때만) */}
+                {/* カテゴリ表示（AI回答時のみ）*/}
                 {msg.role === 'assistant' && msg.category && (
                   <div className="mt-2 pt-2 border-t border-white/20">
                     <p className="text-[20px] text-white/90">
