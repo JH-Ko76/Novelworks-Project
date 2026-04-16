@@ -95,9 +95,9 @@ href=https://1drv.ms/b/c/933a10afa28e82e4/IQCfkqRd7WA3QpVwM0eCxSyCAWKOCANon_QLet
 
 
 ```bash
-#パス例: C:\Users\UserName\Desktop\Novelworks-Project\aws_infra
-#Novelworks-Project Directoryからaws_infraに移動します。
-$cd ./aws_infra
+# Winidow パス例: C:\Users\....\Novelworks-Project\back_end
+#Novelworks-Project Directoryからback_endに移動します。
+$cd ./back_end
 
 #VSCodeのTerminalで以下のコマンドを入力してください
 $terraform -v
@@ -122,9 +122,9 @@ Google AIを使用するためには、事前にAPIキーの発行が必要で�
 
 
 ```bash
-#パス例: C:\Users\UserName\Desktop\Novelworks-Project\aws_infra
-#Novelworks-Project Directoryからaws_infraに移動します。
-$cd ./aws_infra
+# Window パス例: C:\....\Novelworks-Project\back_end
+#Novelworks-Project Directoryからback_endに移動します。
+$cd ./back_end
 #VSCodeのTerminalで以下のコマンドを入力してください
 $terraform destroy
 #正常に実行された場合、AWSインフラがすべて削除されます。
@@ -134,8 +134,8 @@ $terraform destroy
 ### FrontEnd
 
 ```bash
-#パス例: C:\Users\UserName\Desktop\Novelworks-Project\my-app
-#必要なライブラリをインストールします。(TailwindCSS, 
+#Window パス例: C:\....\Novelworks-Project\front_end
+#必要なライブラリをインストールします。 
 $npm install
 
 #TailwindCSSンストール
@@ -158,7 +158,7 @@ $npm run dev
 
 
 ```bash
-#パス例: C:\Users\UserName\Desktop\Novelworks-Project\my-app
+#Window パス例: C:\....\Novelworks-Project\front_end
 #削除コマンドを実行すると、該当パス内のすべてのファイルが削除されるため、
 #必ず現在のパスを確認してから実行してください。
 $Remove-Item -Recurse -Force node_modules, dist, package-lock.json
