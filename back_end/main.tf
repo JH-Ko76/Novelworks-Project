@@ -14,7 +14,7 @@ resource "aws_dynamodb_table" "inquiry_table" {
 
 # 2. Secrets Manager 生成
 resource "aws_secretsmanager_secret" "gemini_api_key" {
-  name        = "gemini_api_key_v4"
+  name        = "gemini_api_key_v1"
   description = "API Key for Google Gemini"
 }
 
