@@ -1,0 +1,26 @@
+# 의존성 패키지 (용량이 매우 크고 다시 설치 가능하므로 제외)
+node_modules/
+dist/
+dist-ssr/
+*.local
+
+# 환경 변수 및 보안 관련 (가장 중요!)
+.env
+.env.local
+.env.*.local
+
+# 로그 파일
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS 관련 시스템 파일
+.DS_Store
+Thumbs.db
+
+# 빌드 결과물
+build/
+
+# IDE 설정 파일 (선택 사항)
+.vscode/
+.idea/
