@@ -9,5 +9,5 @@ terraform {
 
 provider "aws" {
   region = "ap-northeast-2" 
-  profile                  = "Novelworks-Project"
+  profile                  = "my-novelworks-project"
 }
