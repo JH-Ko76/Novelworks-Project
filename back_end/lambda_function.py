@@ -99,8 +99,7 @@ def classify_with_gemini(api_key, text):
             return "その他"
             
     except Exception as e:
-        print(f"AI Classification Error: {e}")
-        return "確認必要です"
+        return "AI Classification Error"
 
 def lambda_handler(event, context):
     headers = {
@@ -116,7 +115,9 @@ def lambda_handler(event, context):
     try:
         body = json.loads(event.get('body', '{}'))
         user_query = body.get('query', '')
-
+        # 修正用の既存IDを取得する
+        inquiry_id = body.get('inquiry_id')
+        
         # 入力値の長さ制限
         if len(user_query) > 500:
             return {'statusCode': 400, 'body': json.dumps({'error': 'Input too long'})}
@@ -124,6 +125,19 @@ def lambda_handler(event, context):
         # 1. AI分類の実行
         api_key = get_secret_cached()
         category = classify_with_gemini(api_key, user_query)
+
+        # 2. 確認が必要な場合は修正
+        # (1) 修正依頼の場合（フロントエンドから inquiry_id を送信）
+        if inquiry_id:
+            print(f"DEBUG: Update request received for inquiry_id: {inquiry_id}")
+            # 이 ID를 그대로 사용해 DynamoDB에 저장합니다. (PutItem 시 자동 덮어씌우기됨)
+            pass
+
+        # (2) 初回作成の場合（フロントエンドから inquiry_id を送信しない）
+        else:
+            print(f"DEBUG: Create request received. Generating new inquiry_id.")
+            # 従来と同様に、aws_request_id を使用して新しいIDを生成します。
+            inquiry_id = context.aws_request_id
 
         # 2. DynamoDB の保存       
         item = {
