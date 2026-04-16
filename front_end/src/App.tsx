@@ -1,4 +1,4 @@
-import ChatAgent from './ChatAgent'; // 작성하신 컴포넌트 임포트
+import ChatAgent from './ChatAgent'; 
 
 function App() {
 return (
