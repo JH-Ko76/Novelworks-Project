@@ -109,7 +109,7 @@ def lambda_handler(event, context):
         'Access-Control-Allow-Headers': 'Content-Type'
     }
 
-    # API Gateway의 OPTIONS(Preflight) 
+    # API Gateway OPTIONS
     if event.get('httpMethod') == 'OPTIONS':
         return {'statusCode': 200, 'headers': headers}
 
