@@ -21,6 +21,7 @@
 
 
 ## ✨ 主要機能 <a name="features"></a>
+### クリックすると、より大きく表示されます。
 - 分類
 <img width="426" height="240" alt="image" src="https://blog.kakaocdn.net/dna/c5NCtE/dJMcacQjBSC/AAAAAAAAAAAAAAAAAAAAAD549wLrkSipnTv53KXoRYd3UFZhIXV54IsF12NtMGra/img.gif?credential=yqXZFxpELC7KVnFOS48ylbz2pIh7yKj8&expires=1777561199&allow_ip=&allow_referer=&signature=sESXI6hxhfvGpECiomSh1ZDmDvg%3D" />
 
