@@ -256,7 +256,7 @@ $Remove-Item -Recurse -Force node_modules, dist, package-lock.json
    採用しました。
 
    
-   (4). キーのローテーション </br>
+   (4). キーローテーション </br>
    Secrets Managerの機能の一つとして、今後プロジェクトが拡張された場合、セキュリティポリシーの
   観点からパスワードやAPIキーは長期間使用せず、定期的にローテーションすることが推奨されます。</br>
   Secrets Managerはこのようなキー管理を自動化できるため、その利点を考慮し、将来的な拡張も見据
