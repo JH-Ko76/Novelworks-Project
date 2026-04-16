@@ -1,73 +1,274 @@
-# React + TypeScript + Vite
+# novelworks_Project
+<p> 
+   今回の課題要件は、以下となります。</br>顧客からの問い合わせを AI で自動分類して適切なチーム
+   に振り分ける簡易エージェントを AWS上に構築し、ローカルで動くチャット UI から呼び出せるように
+   してください。
+</p>
+<p>
+   Gemini AIを使用してバイブコーディングを行いました</br>
+   全体の制作時間は、その他の環境設定を含めて約9時間かかりました。
+</p>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### コンテンツ
+-  [🗺️ 全体システム構成図](#architecture)
+-  [✨ 主要機能](#features)
+-  [🛠 技術スタック](#tech-stack)
+-  [🚀 クイックスタート](#quickstart)
+-  [👾 参考 & コード説明](#reference)
+   
+## 🗺️ 全体システム構成図 <a name="architecture"></a>
+<img width="1401" height="663" alt="image" src="https://github.com/user-attachments/assets/bde36551-36f4-49c7-abbf-243d5e74c521" />
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## ✨ 主要機能 <a name="features"></a>
+- 分類
+<img width="426" height="240" alt="image" src="https://blog.kakaocdn.net/dna/okcdS/dJMb990nCOY/AAAAAAAAAAAAAAAAAAAAADB61dLOuRJfwwDyw6QhPFvTBsrWGdvDBnmkKCgW8YbJ/img.gif?credential=yqXZFxpELC7KVnFOS48ylbz2pIh7yKj8&expires=1777561199&allow_ip=&allow_referer=&signature=o3XM%2By7QImJom4wxLbI9c8X%2Bq1U%3D" />
 
-## React Compiler
+- 確信度が低い場合の修正
+<img width="426" height="240" alt="image" src="https://blog.kakaocdn.net/dna/biJPZd/dJMcaarqN6b/AAAAAAAAAAAAAAAAAAAAAFLSm6NO4QuLbfidYMxNwOQp0NbxrT9kG5TSK7EMVYi6/img.gif?credential=yqXZFxpELC7KVnFOS48ylbz2pIh7yKj8&expires=1777561199&allow_ip=&allow_referer=&signature=qvHBxiMuuIhaMz5jLfdCnXKs9qs%3D" />
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-## Expanding the ESLint configuration
+## 🛠 技術スタック<a name="tech-stack"></a>
+<h4>🖥 Front End </h4> 
+<ol>
+  <li> Framework: React 18</li>
+  <li> Build Tool: Vite </li>
+  <li> Language: TypeScript </li>
+  <li> Styling: Tailwind CSS </li>
+  <li> HTTP Client: Axios </li>
+</ol>
+</br>
+<h4> Back End (Serverless) </h4> 
+<ol>
+  <li> Runtime: Python 3.11</li>
+  <li> Server : AWS Lambdae </li>
+  <li> API Management: Amazon API Gateway </li>
+  <li> Database: Amazon DynamoDB </li>
+  <li> Security: AWS Secrets Manager </li>
+  <li> Monitoring: Amazon CloudWatch </li>
+  <li> AI Engine: Google Gemini 2.5 Flash </li>
+  <li> Infrastructure as Code : Terraform </li>
+</ol>
+</br>
+<h4>🖥 Tools & Package Management </h4> 
+<ol>
+  <li> Package Manager: npm </li>
+  <li> Runtime Env: Node.js </li>
+  <li> SDK: Boto3 </li>
+  <li> edit: vscode </li>
+</ol>
+</br>
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 🚀 クイックスタート<a name="quickstart"></a>
+### 1. 要件 
+<p>開始する前に、以下の環境が整っている必要があります。</p>
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+<ol>
+   <li><a href="https://nodejs.org/en/blog/release/v24.14.1">Node.js v24.14.1</a></li>
+   <li><a href="https://www.python.org/downloads/release/python-3144/">Python v3.14.4</a></li>
+  <li><a href="https://releases.hashicorp.com/terraform/1.14.8/">terraform v1.14.8</a></li>
+     <li><a href="https://docs.npmjs.com/cli/v11/configuring-npm/install">npm v11.11.0</a></li>
+   <li><a href="https://aws.amazon.com/jp/">AWS Account</a></li>
+   <li><a href="https://aistudio.google.com/">Gemini API Key</a></li>
+   <li><a href="https://code.visualstudio.com/download">Vscode</a></li>
+</ol>
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### 2. 設置
+<p>VScodeのTerminalで次のコマンドを入力してください</p>
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### Installation
+```bash
+#プロジェクトコピー
+$git clone https://github.com/JH-Ko76/Novelworks-Project.git
+$cd Novelworks-Project
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Backend
+<p>
+   Terraformの設定前に、事前にアクセスキーに関する環境変数の設定が必要です。</br>
+   AWSでIAMアカウントを作成し、キーを設定する手順は以下のドキュメントをご確認のうえ、コマンド
+   入力する前に事前に実施してください。</br>
+   <a
+href=https://1drv.ms/b/c/933a10afa28e82e4/IQCfkqRd7WA3QpVwM0eCxSyCAWKOCANon_QLetZSGU4mIfk?e=KCibj7">terraform 設定手順</a>
+</p>
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+#パス例: C:\Users\UserName\Desktop\Novelworks-Project\aws_infra
+#Novelworks-Project Directoryからaws_infraに移動します。
+$cd ./aws_infra
+
+#VSCodeのTerminalで以下のコマンドを入力してください
+$terraform -v
+$terraform init
+$terraform plan
+$terraform apply
+
+#正常に実行された場合、AWSインフラの作成はこれで完了です。
 ```
+<p>
+Google AIを使用するためには、事前にAPIキーの発行が必要です。
+発行後は、AWSでキーを管理するための追加設定が必要となるため、
+以下のドキュメントにまとめました。
+必ず事前に該当手順に従って設定を完了したうえで、プロジェクトを実行してください。</br>
+<a href=https://1drv.ms/b/c/933a10afa28e82e4/IQBd7Lvk1vRTRI6x5j3t32wtATyjHJZMIdMambXKvOBMXTs?e=1rkU5s">Google AI API 設定手順</a>
+</p>
+
+<p>
+   これでバックエンドの設定は完了です。</br>
+   インフラを削除する手順は以下の通りです。
+</p>
+
+
+```bash
+#パス例: C:\Users\UserName\Desktop\Novelworks-Project\aws_infra
+#Novelworks-Project Directoryからaws_infraに移動します。
+$cd ./aws_infra
+#VSCodeのTerminalで以下のコマンドを入力してください
+$terraform destroy
+#正常に実行された場合、AWSインフラがすべて削除されます。
+```
+
+
+### FrontEnd
+
+```bash
+#パス例: C:\Users\UserName\Desktop\Novelworks-Project\my-app
+#必要なライブラリをインストールします。(TailwindCSS, 
+$npm install
+
+#TailwindCSSンストール
+$npm install -D tailwindcss postcss autoprefixer
+$npx tailwindcss init -p
+
+#インストールされたライブラリに既知の脆弱性があるか確認します。
+$npm audit
+
+#プロジェクトを実行します。
+$npm run dev
+```
+
+<p>
+   <a href=https://1drv.ms/b/c/933a10afa28e82e4/IQA322KDV4zbSIY03uwDAPnVAbFW6iy1mfFAmTOhUQ-PxZI?e=hwkFG3">API Gateway 設定手順</a>
+
+   これでフロントエンドの設定は完了です。</br>
+   フロントエンドを削除する手順は以下の通りです。
+</p>
+
+
+```bash
+#パス例: C:\Users\UserName\Desktop\Novelworks-Project\my-app
+#削除コマンドを実行すると、該当パス内のすべてのファイルが削除されるため、
+#必ず現在のパスを確認してから実行してください。
+$Remove-Item -Recurse -Force node_modules, dist, package-lock.json
+```
+
+
+## 👾 参考 & コード説明 <a name="reference"></a>
+
+### Terraform 導入の理由
+- 高い可読性と保守性
+  <p>
+     (1).直感的な状態把握 </br>
+     Terraformは宣言型言語であり、インフラの最終状態をコードで明確に記述できるという特徴を持
+     っています。そのため、本課題の要件に基づくインフラ構成を直感的に把握するのに適していると判
+     断しました。</br>
+     
+     (2).協業および学習曲線 </br>
+     将来的なチームでの協業を考慮した際、コードの可読性が高く、ドキュメントも整備されているた
+     め、メンバーの迅速なオンボーディングと円滑なコミュニケーションが可能だと考えました。
+  </p>
+- 効率的な状態管理
+  <p>
+     (3).直感的な状態把握 </br>
+     terraform.tfstateファイルを通じて、実際にデプロイされたリソースとコード間の状態を同期でき
+     るため、変更管理が容易であると考えました。</br>
+     
+     (4).部分的なアップデートの最適化</br>
+     インフラ全体を再デプロイする必要がなく、変更された箇所のみを検知して更新できる特性により、
+     今回のようにコードの修正や追加を迅速に行う場面において、開発サイクルの短縮とインフラ運用の
+     効率化につながると判断しました。
+  </p>
+- 開発生産性および完成度の最大化
+  <p>    
+     (5).時間リソースの戦略的配分</br>
+     新しいIaCツールの習得にかかる埋没コストを抑える代わりに、これまでの学習経験を活かして
+     Terraformの機能を積極的に活用し、システムの安定性確保に注力しました。
+  </p>
+
+### AWS サービス選定理由
+- API Gateway
+  
+     (1).セキュリティ & 可用性 </br>
+     作成したLambdaロジックがパブリックインターネットに直接公開されないよう、一次的なエンドポ
+     イントとして採用しました。 </br>
+     また、秒間リクエスト数を制限する設定により、大量トラフィックなどの異常アクセスを事前に遮断
+     できる点にメリットがあるため採用しました。
+  
+     
+     (2).拡張性 </br>
+     将来的にサービスを拡張し、複数のLambda関数やサービスが増えた場合でも、クライアント側で追加
+     設定を行う必要がなく、API Gatewayという単一のエンドポイントを経由することで複雑さを軽減で
+     きると考えました。
+  
+  
+     また、IAMやCognitoなどと連携することで、各関数ごとに個別のセキュリティロジックを実装する
+     必要がなく、API Gateway側で一括して認証・認可の検証が可能になる点にも利点があると考えまし
+     た。
+
+
+  さらに、CloudWatchを利用することで、エラーログ、呼び出し成功、レスポンスタイムなどの各種ログ
+  を統合的に管理できる点にもメリットがあると考えました。
+
+  
+- AWS Lambda & DynamoDB
+  
+  (1). コスト効率性 </br>
+  固定的なサーバー維持費がかからず、問い合わせが発生して関数が実行されたときにのみ課金される
+  ため、この点がチャットボットのようなシステムに適していると考えました。
+
+  
+  (2). セキュリティ </br>
+  Lambdaのサーバーレス方式により、サーバーが常時稼働することで発生し得る脆弱性を防止できると考え
+  採用しました。
+  
+
+  (3). 拡張性 </br>
+  ユーザー数が急増した場合でも、別途インフラ設定を行うことなく、AWSが自動的にインスタンスを 
+  スケールできる点がサービスの安定性向上につながると考え、採用しました。
+
+
+-  AWS Secrets Manager
+
+   (1). ハードコーディングの防止 </br>
+   Secrets Managerを使用した最も根本的な理由は、APIキーのような機密情報を平文で露出させず、
+   別の安全なストレージに保管することで、Gitなどのコード管理ツールを通じた漏洩を防ぐためです。
+
+   
+   (2). 認証情報の一元管理 </br>
+   キーを変更する必要がある場合でも、コードを修正することなく、すべてのサービスに反映できる
+   という管理上の利点があるため採用しました。
+   
+   (3). アクセス制御と暗号化 </br>
+   IAMにより特定のLambda関数のみがキーを読み取れるように詳細なアクセス制御が可能である点と、
+   データの保存および転送時にKMSによる暗号化が行われることで安全性を高められると考え、
+   採用しました。
+
+  (4). キーのローテーション </br>
+  Secrets Managerの機能の一つとして、今後プロジェクトが拡張された場合、セキュリティポリシーの
+  観点からパスワードやAPIキーは長期間使用せず、定期的にローテーション（更新）することが推奨され
+  ます。</br>
+  Secrets Managerはこのようなキー管理を自動化できるため、その利点を考慮し、将来的な拡張も見据
+  えて採用しました。
+  
+-  Amazon CloudWatch 
+   
+   (1). リアルタイムモニタリングとトラブルシューティング </br>
+   システム開発の過程において、サーバーへデータを送信する際に発生したエラー情報や、さまざまな
+   エラー内容を確認することで、より迅速に問題を特定し対応することができました。
+
+### AI 活用・突破力レポートは以下をご参照ください。
+
+
+<a href="https://1drv.ms/b/c/933a10afa28e82e4/IQCPtQN7FU5wSoMyUQQMnxLKAWv7wdKzxMT3JTUIbZttLKg?e=vA5AUU"> AI 活用・突破力レポート</a>
+
