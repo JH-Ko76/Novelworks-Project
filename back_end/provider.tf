@@ -9,7 +9,5 @@ terraform {
 
 provider "aws" {
   region = "ap-northeast-2" 
-  shared_config_files      = ["C:\\Users\\KOHOME\\.aws\\config"]
-  shared_credentials_files = ["C:\\Users\\KOHOME\\.aws\\credentials"]
-  profile                  = "my-novelworks-project"
+  profile = "my-novelworks-project"
 }
