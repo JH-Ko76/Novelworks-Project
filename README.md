@@ -22,6 +22,16 @@
 
 ## ✨ 主要機能 <a name="features"></a>
 ### クリックすると、より大きく表示されます。
+機能は以下の通りです。
+
+
+画面下部の入力欄から問い合わせ内容を入力すると、その内容が自動的に分類され、データベースに保存されるとともに、分類結果が画面に表示されます。
+
+
+
+また、問い合わせの分類結果が曖昧で確認が必要な場合には、画像のように修正ボタンを使用して内容を修正し、そのまま保存できる機能を実装しました。
+
+
 - 分類
 <img width="426" height="240" alt="image" src="https://blog.kakaocdn.net/dna/c5NCtE/dJMcacQjBSC/AAAAAAAAAAAAAAAAAAAAAD549wLrkSipnTv53KXoRYd3UFZhIXV54IsF12NtMGra/img.gif?credential=yqXZFxpELC7KVnFOS48ylbz2pIh7yKj8&expires=1777561199&allow_ip=&allow_referer=&signature=sESXI6hxhfvGpECiomSh1ZDmDvg%3D" />
 
