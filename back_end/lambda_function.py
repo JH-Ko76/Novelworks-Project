@@ -4,10 +4,10 @@ import boto3
 import urllib.request
 from datetime import datetime, timezone
 
-# 리전명, 시크릿 네임 전역변수로 관리 
+# リージョン名、シークレットネームをグローバル変数で管理
 SECRET_NAME = os.environ.get('SECRET_NAME')
 AWS_REGION = os.environ.get('AWS_REGION', 'ap-northeast-2')
-#dynamodb table name 전역변수로 선언  (람다 특징을 사용해 Warm Start로 구현)
+#dynamodb table name グローバル変数として宣言（ラムダの特徴を利用して Warm Start で実装）
 table_name = os.environ.get('DYNAMODB_TABLE', 'novel_works_db')
 dynamodb = boto3.resource('dynamodb', region_name=AWS_REGION)
 table = dynamodb.Table(table_name)
@@ -24,16 +24,15 @@ def get_secret_cached():
 def get_secret():
     secret_name = SECRET_NAME
     region_name = AWS_REGION
-    #secretsmanager 접근
+    #secretsmanager Access
     client = boto3.client("secretsmanager", region_name=region_name)
     response = client.get_secret_value(SecretId=secret_name)
     secret_value = response['SecretString']
-    # 만약 JSON 형식으로 저장했다면 파싱이 필요합니다.
     try:
         secret_dict = json.loads(secret_value)
-        return secret_dict.get('api_key') # 저장할 때 쓴 '키' 이름을 넣으세요.
+        return secret_dict.get('api_key') 
     except json.JSONDecodeError:
-        # 일반 텍스트(Plaintext)로 저장했다면 그대로 반환
+        # Plainext で保存した場合はそのまま返す
         return secret_value
 
 def classify_with_gemini(api_key, text):
@@ -45,7 +44,7 @@ def classify_with_gemini(api_key, text):
         ]
     example_str = "\n".join([f"問い合わせ: {ex['query']} -> 分類: {ex['category']}" for ex in examples])
 
-    # 프롬프트에 'confidence' 측정 지침 추가
+    # プロンプトに「confidence」測定指針を追加
     prompt = f"""
     [Role]
     Expert Customer Service Classifier.
@@ -86,12 +85,11 @@ def classify_with_gemini(api_key, text):
             
             ai_data = json.loads(raw_response)
             
-            # 확신도 점수와 카테고리 추출
+            # 確信度スコアとカテゴリ抽出
             category = ai_data.get("category", "その他")
             confidence = ai_data.get("confidence", 0.0)
             
-            # [핵심 로직] 확신도가 낮으면 '確認が必要です' 플래그 세움
-            # 보안 관제 임계값 설정과 같은 원리입니다.
+            # Human-in-the-Loop
             if confidence < 0.5:
                 print(f"DEBUG: Low confidence ({confidence}) for text: {text}")
                 return "確認必要です"
@@ -106,12 +104,12 @@ def classify_with_gemini(api_key, text):
 
 def lambda_handler(event, context):
     headers = {
-        'Access-Control-Allow-Origin': '*', # 이번에는 테스트 단계이므로 모두 허용을 했지만, 실제 서비스 시 특정 도메인 설정이 필요합니다.
+        'Access-Control-Allow-Origin': '*', # 今回はテスト段階なので、すべて許可しました。
         'Access-Control-Allow-Methods': 'POST,GET,OPTIONS',
         'Access-Control-Allow-Headers': 'Content-Type'
     }
 
-    # API Gateway의 OPTIONS(Preflight) 요청 처리
+    # API Gateway의 OPTIONS(Preflight) 
     if event.get('httpMethod') == 'OPTIONS':
         return {'statusCode': 200, 'headers': headers}
 
@@ -119,15 +117,15 @@ def lambda_handler(event, context):
         body = json.loads(event.get('body', '{}'))
         user_query = body.get('query', '')
 
-        # 입력값 길이 제한 (기본적인 방어)
+        # 入力値の長さ制限
         if len(user_query) > 500:
             return {'statusCode': 400, 'body': json.dumps({'error': 'Input too long'})}
 
-        # 1. AI 분류 실행
+        # 1. AI分類の実行
         api_key = get_secret_cached()
         category = classify_with_gemini(api_key, user_query)
 
-        # 2. DynamoDB 저장        
+        # 2. DynamoDB の保存       
         item = {
             'inquiry_id': context.aws_request_id,
             'content': user_query,
