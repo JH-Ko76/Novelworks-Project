@@ -22,10 +22,10 @@
 
 ## ✨ 主要機能 <a name="features"></a>
 - 分類
-<img width="426" height="240" alt="image" src="https://blog.kakaocdn.net/dna/okcdS/dJMb990nCOY/AAAAAAAAAAAAAAAAAAAAADB61dLOuRJfwwDyw6QhPFvTBsrWGdvDBnmkKCgW8YbJ/img.gif?credential=yqXZFxpELC7KVnFOS48ylbz2pIh7yKj8&expires=1777561199&allow_ip=&allow_referer=&signature=o3XM%2By7QImJom4wxLbI9c8X%2Bq1U%3D" />
+<img width="426" height="240" alt="image" src="https://blog.kakaocdn.net/dna/c5NCtE/dJMcacQjBSC/AAAAAAAAAAAAAAAAAAAAAD549wLrkSipnTv53KXoRYd3UFZhIXV54IsF12NtMGra/img.gif?credential=yqXZFxpELC7KVnFOS48ylbz2pIh7yKj8&expires=1777561199&allow_ip=&allow_referer=&signature=sESXI6hxhfvGpECiomSh1ZDmDvg%3D" />
 
 - 確信度が低い場合の修正
-<img width="426" height="240" alt="image" src="https://blog.kakaocdn.net/dna/biJPZd/dJMcaarqN6b/AAAAAAAAAAAAAAAAAAAAAFLSm6NO4QuLbfidYMxNwOQp0NbxrT9kG5TSK7EMVYi6/img.gif?credential=yqXZFxpELC7KVnFOS48ylbz2pIh7yKj8&expires=1777561199&allow_ip=&allow_referer=&signature=qvHBxiMuuIhaMz5jLfdCnXKs9qs%3D" />
+<img width="426" height="240" alt="image" src="https://blog.kakaocdn.net/dna/BAqBq/dJMcahKShQZ/AAAAAAAAAAAAAAAAAAAAANqEf6qo3sqiLUodV4rN_iV7ak1Vj4Me8iCHNHy0Qj3j/img.gif?credential=yqXZFxpELC7KVnFOS48ylbz2pIh7yKj8&expires=1777561199&allow_ip=&allow_referer=&signature=j%2FjBOXfDcstIy9%2BvjRYopIhDluo%3D" />
 
 
 ## 🛠 技術スタック<a name="tech-stack"></a>
