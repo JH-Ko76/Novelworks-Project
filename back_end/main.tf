@@ -125,8 +125,10 @@ resource "aws_api_gateway_integration_response" "options_ask_response" {
     "method.response.header.Access-Control-Allow-Methods" = "'POST,OPTIONS,GET'",
     "method.response.header.Access-Control-Allow-Origin"  = "'*'"
   }
-  depends_on = [aws_api_gateway_integration.options_ask_integration]
-}
+depends_on = [
+  aws_api_gateway_integration.options_ask_integration,
+  aws_api_gateway_method_response.options_ask_200
+]
 
 # CORS設定：/updateリソース用
 resource "aws_api_gateway_method" "options_update" {
@@ -166,7 +168,7 @@ resource "aws_api_gateway_integration_response" "options_update_response" {
     "method.response.header.Access-Control-Allow-Methods" = "'PATCH,OPTIONS,GET'",
     "method.response.header.Access-Control-Allow-Origin"  = "'*'"
   }
-  depends_on = [aws_api_gateway_integration.options_update_integration]
+  depends_on = [aws_api_gateway_integration.options_update_integration, aws_api_gateway_method_response.options_update_200]
 }
 
 # デプロイおよびアクセス権限
