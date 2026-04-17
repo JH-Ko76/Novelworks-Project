@@ -167,7 +167,7 @@ $npm run dev
 ```
 
 <p>
-   npm の設定が完了したら、API Gateway の設定を行い、npm run dev で再実行できるか確認してください
+   npm の設定が完了したら、API Gateway の設定を行い、npm run dev で再実行できるか確認してください</br>
    <a href=https://1drv.ms/b/c/933a10afa28e82e4/IQA322KDV4zbSIY03uwDAPnVAbFW6iy1mfFAmTOhUQ-PxZI?e=hwkFG3">API Gateway 設定手順</a>
 
    これでフロントエンドの設定は完了です。</br>
