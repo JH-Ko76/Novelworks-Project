@@ -132,7 +132,6 @@ Google AIを使用するためには、事前にAPIキーの発行が必要で�
 
 
 ```bash
-# Window パス例: C:\....\Novelworks-Project\back_end
 #Novelworks-Project Directoryからback_endに移動します。
 $cd ./back_end
 #VSCodeのTerminalで以下のコマンドを入力してください
@@ -144,13 +143,13 @@ $terraform destroy
 ### FrontEnd
 
 ```bash
-#Window パス例: C:\....\Novelworks-Project\front_end
-# nvmをダウンロードしてインストールする：
+#nvmをダウンロードしてインストールする
 $curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.4/install.sh | bash
-# シェルを再起動する代わりに実行する
+#シェルを再起動する代わりに実行する
 $\. "$HOME/.nvm/nvm.sh"
 # Node.jsをダウンロードしてインストールする：
-$nvm install 24
+$nvm install 
+
 # Node.jsのバージョンを確認する：
 $node -v 
 #必要なライブラリをインストールします。 
@@ -168,6 +167,7 @@ $npm run dev
 ```
 
 <p>
+   npm の設定が完了したら、API Gateway の設定を行い、npm run dev で再実行できるか確認してください
    <a href=https://1drv.ms/b/c/933a10afa28e82e4/IQA322KDV4zbSIY03uwDAPnVAbFW6iy1mfFAmTOhUQ-PxZI?e=hwkFG3">API Gateway 設定手順</a>
 
    これでフロントエンドの設定は完了です。</br>
