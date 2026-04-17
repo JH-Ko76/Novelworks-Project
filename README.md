@@ -89,8 +89,8 @@
 ### Installation
 ```bash
 #プロジェクトコピー
-$git clone https://github.com/JH-Ko76/Novelworks-Project.git
-$cd Novelworks-Project
+$ git clone https://github.com/JH-Ko76/Novelworks-Project.git
+$ cd Novelworks-Project
 ```
 
 ### Backend
@@ -106,13 +106,34 @@ href=https://1drv.ms/b/c/933a10afa28e82e4/IQCfkqRd7WA3QpVwM0eCxSyCAWKOCANon_QLet
 ```bash
 # Winidow パス例: C:\Users\....\Novelworks-Project\back_end
 #Novelworks-Project Directoryからback_endに移動します。
-$cd ./back_end
+$ cd ./back_end
 
 #VSCodeのTerminalで以下のコマンドを入力してください
-$terraform -v
-$terraform init
-$terraform plan
-$terraform apply
+$ terraform -v
+#terraform インストールされていない場合、以下のコマンドを入力してください。
+
+#Window Power Shellの場合
+#1. Chocolateyインストール
+$ Set-ExecutionPolicy Bypass -Scope Process -Force; `
+[System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; `
+iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
+#2.Terraformインストール
+$ choco install terraform -y
+#インストール後、terraform -v でバージョン名が表示されば成功です
+
+
+#Macの場合
+#1.Homebrewインストール
+$ /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+#2.Terraformインストール
+$ brew tap hashicorp/tap
+$ brew install hashicorp/tap/terraform
+#インストール後、terraform -v でバージョン名が表示されば成功です。
+
+#Infra作成 (インストール済みであれば、進めてください.)
+$ terraform init
+$ terraform plan
+$ terraform apply
 
 #正常に実行された場合、AWSインフラの作成はこれで完了です。
 ```
@@ -132,9 +153,9 @@ Google AIを使用するためには、事前にAPIキーの発行が必要で�
 
 ```bash
 #Novelworks-Project Directoryからback_endに移動します。
-$cd ./back_end
+$ cd ./back_end
 #VSCodeのTerminalで以下のコマンドを入力してください
-$terraform destroy
+$ terraform destroy
 #正常に実行された場合、AWSインフラがすべて削除されます。
 ```
 
@@ -143,26 +164,26 @@ $terraform destroy
 
 ```bash
 #nvmをダウンロードしてインストールする
-$curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.4/install.sh | bash
+$ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.4/install.sh | bash
 #シェルを再起動する代わりに実行する
-$\. "$HOME/.nvm/nvm.sh"
-# Node.jsをダウンロードしてインストールする：
-$nvm install 
+$ \. "$HOME/.nvm/nvm.sh"
+#Node.jsをダウンロードしてインストールする：
+$ nvm install 
 
-# Node.jsのバージョンを確認する：
-$node -v 
+#Node.jsのバージョンを確認する：
+$ node -v 
 #必要なライブラリをインストールします。 
-$npm -v
+$ npm -v
 
 #TailwindCSSンストール
-$npm install -D tailwindcss postcss autoprefixer
-$npx tailwindcss init -p
+$ npm install -D tailwindcss postcss autoprefixer
+$ npx tailwindcss init -p
 
 #インストールされたライブラリに既知の脆弱性があるか確認します。
-$npm audit
+$ npm audit
 
 #プロジェクトを実行します。
-$npm run dev
+$ npm run dev
 ```
 
 <p>
@@ -178,7 +199,7 @@ $npm run dev
 #Window パス例: C:\....\Novelworks-Project\front_end
 #削除コマンドを実行すると、該当パス内のすべてのファイルが削除されるため、
 #必ず現在のパスを確認してから実行してください。
-$Remove-Item -Recurse -Force node_modules, dist, package-lock.json
+$ Remove-Item -Recurse -Force node_modules, dist, package-lock.json
 ```
 
 
