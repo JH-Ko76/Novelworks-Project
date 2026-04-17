@@ -21,6 +21,9 @@
 
 ## ✨ 主要機能 <a name="features"></a>
 ### クリックすると、より大きく表示されます。
+
+<a href="https://jh-ko76.github.io/novel_hosting.github.io/">テストモデル設定手順</a>
+上記のテストモデルにアクセスすれば、実際に使用してみることができます。</br>
 機能は以下の通りです。
 
 
