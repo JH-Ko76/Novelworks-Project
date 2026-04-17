@@ -1,4 +1,4 @@
-# Lambda Execution Role
+# Lambda実行用IAMロール
 resource "aws_iam_role" "lambda_role" {
   name = "inquiry_classifier_lambda_role"
 
