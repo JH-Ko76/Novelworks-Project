@@ -51,7 +51,7 @@
 <h4> Back End (Serverless) </h4> 
 <ol>
   <li> Runtime: Python 3.11</li>
-  <li> Server : AWS Lambdae </li>
+  <li> Server : AWS Lambda </li>
   <li> API Management: Amazon API Gateway </li>
   <li> Database: Amazon DynamoDB </li>
   <li> Security: AWS Secrets Manager </li>
