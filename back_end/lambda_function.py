@@ -127,21 +127,17 @@ def lambda_handler(event, context):
         category = classify_with_gemini(api_key, user_query)
 
         # 2. 確認が必要な場合は修正
-        # (1) 修正依頼の場合（フロントエンドから inquiry_id を送信）
+        # (1) 修正依頼の場合
         if inquiry_id:
-            print(f"DEBUG: Update request received for inquiry_id: {inquiry_id}")
-            # 이 ID를 그대로 사용해 DynamoDB에 저장합니다. (PutItem 시 자동 덮어씌우기됨)
-            pass
-
+        print(f"DEBUG: Update request received for inquiry_id: {inquiry_id}")
         # (2) 初回作成の場合（フロントエンドから inquiry_id を送信しない）
         else:
             print(f"DEBUG: Create request received. Generating new inquiry_id.")
-            # 従来と同様に、aws_request_id を使用して新しいIDを生成します。
             inquiry_id = context.aws_request_id
-
-        # 2. DynamoDB の保存       
+        
+        # 2. DynamoDB の保存   
         item = {
-            'inquiry_id': context.aws_request_id,
+            'inquiry_id': inquiry_id,   
             'content': user_query,
             'category': category,
             'timestamp': datetime.now(timezone.utc).isoformat(timespec='seconds')
