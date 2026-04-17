@@ -1,4 +1,4 @@
-﻿import os
+import os
 import json
 import boto3
 import urllib.request
@@ -129,7 +129,7 @@ def lambda_handler(event, context):
         # 2. 確認が必要な場合は修正
         # (1) 修正依頼の場合
         if inquiry_id:
-        print(f"DEBUG: Update request received for inquiry_id: {inquiry_id}")
+            print(f"DEBUG: Update request received for inquiry_id: {inquiry_id}")
         # (2) 初回作成の場合（フロントエンドから inquiry_id を送信しない）
         else:
             print(f"DEBUG: Create request received. Generating new inquiry_id.")
