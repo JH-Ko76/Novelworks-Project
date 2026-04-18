@@ -165,8 +165,10 @@ $ terraform destroy
 ### FrontEnd
 
 ```bash
-#windowの場合直接設置してください。
-#nvmをダウンロードしてインストールする
+#windowの場合上記の要件項目からNode.jsをクリックし、直接インストールしてください。
+
+#mac & Linuxの場合　
+#vmダウンロードしてインストールする
 $ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.4/install.sh | bash
 #シェルを再起動する代わりに実行する
 $ \. "$HOME/.nvm/nvm.sh"
