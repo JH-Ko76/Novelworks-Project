@@ -5,7 +5,7 @@
    してください。
 </p>
 <p>
-   Chat GPT, Gemini AIを使用してコーディング(vibe coding)しました。
+   AI（ChatGPT, Gemini）を活用し、設計および実装を効率化しました。
 </p>
 
 ### コンテンツ
