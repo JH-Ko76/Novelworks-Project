@@ -361,7 +361,7 @@ $ Remove-Item -Recurse -Force node_modules, dist, package-lock.json
 本サービスを実際に運用する際に発生する主なコスト要素は以下の通りです。
 
 
-課金要素：
+課金要素 </br>
 AIによる応答生成（トークンベース課金）</br>
 AWS Lambda の実行コスト</br>
 DynamoDB の読み取り／書き込み（データ保存リクエスト）</br>
