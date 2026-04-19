@@ -213,7 +213,7 @@ $ Remove-Item -Recurse -Force node_modules, dist, package-lock.json
 ### Terraform 導入の理由
 - 高い可読性と保守性
   <p>
-     (1).直感的な状態把握 </br>
+     (1).コードを通じた直感的なインフラ把握 </br>
      Terraformは宣言型言語であり、インフラの最終状態をコードで明確に記述できるという特徴を持
      っています。そのため、本課題の要件に基づくインフラ構成を直感的に把握するのに適していると判
      断しました。</br>
@@ -224,7 +224,7 @@ $ Remove-Item -Recurse -Force node_modules, dist, package-lock.json
   </p>
 - 効率的な状態管理
   <p>
-     (3).直感的な状態把握 </br>
+     (3).高い状態管理能力 </br>
      terraform.tfstateファイルを通じて、実際にデプロイされたリソースとコード間の状態を同期でき
      るため、変更管理が容易であると考えました。</br>
      
